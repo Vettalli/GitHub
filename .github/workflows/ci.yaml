@@ -1,0 +1,32 @@
+name: CI Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: windows-latest  # macos-latest or ubuntu-latest if needed
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # Checkout the repository to the runner
+
+      - name: Set up JDK 19 with Amazon Corretto
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'corretto'
+          architecture: 'x64'
+
+      - name: Set up dependencies
+        run: |
+          .\mvnw.cmd clean install  # Use your preferred build tool (e.g., Maven, Gradle)
+
+      - name: Run Tests
+        run: |
+          .\mvnw.cmd test
