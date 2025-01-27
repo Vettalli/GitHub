@@ -15,6 +15,8 @@ There is a description above each test. Also when calling the method logging is 
 
 ToDo:
 
-move user data to Github variables secrets and get them using env
-send locale as parameter to test (relevant for all tests)
-create tests with different localisations
+- move user data to Github variables secrets and get them using env
+
+- send locale as parameter to test (relevant for all tests)
+
+- create tests with different localisations
